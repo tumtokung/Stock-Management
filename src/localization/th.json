@@ -1,0 +1,25 @@
+{
+    "BottomTab" : {
+        "selectLang" : "เลือกภาษา",
+        "select" : "เลือก"
+    },
+    "Dashboard" : {
+        "title" : "แดชบอร์ด"
+    },
+    "Product" : {
+        "title" : "สินค้า"
+    },
+    "Transaction" : {
+        "title" : "ธุรกรรม"
+    },
+    "Setting" : {
+        "title" : "ตั้งค่า",
+        "nameStore" : "ร้านเครื่องเขียน",
+        "colorMode" : "โหมดสี",
+        "language" : "ภาษา",
+        "languageUse" : "ไทย",
+        "dark" : "มืด",
+        "light" : "สว่าง",
+        "deviceSetting" : "ตามตั้งค่าเครื่อง"  
+    } 
+}

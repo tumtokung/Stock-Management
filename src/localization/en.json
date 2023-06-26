@@ -1,0 +1,25 @@
+{
+    "BottomTab" : {
+        "selectLang" : "Select Language",
+        "select" : "Select"
+    },
+    "Dashboard" : {
+        "title" : "Dashboard"
+    },
+    "Product" : {
+        "title" : "Product"
+    },
+    "Transaction" : {
+        "title" : "Transaction"
+    },
+    "Setting" : {
+        "title" : "Setting",
+        "nameStore" : "Stationery Shop",
+        "colorMode" : "Color Mode",
+        "language" : "Language",
+        "languageUse" : "English",
+        "dark" : "Dark",
+        "light" : "Light",
+        "deviceSetting" : "Device Setting" 
+    } 
+}
