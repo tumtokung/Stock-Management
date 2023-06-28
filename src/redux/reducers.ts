@@ -3,6 +3,7 @@ import {AppState, AppActionType, AppActionInterface} from './models';
 const initialState: AppState = {
   colorMode: 'device',
   products: [],
+  transactions: [],
 };
 
 export function appReducer(
@@ -10,6 +11,11 @@ export function appReducer(
   action: AppActionInterface,
 ): AppState {
   switch (action.type) {
+    case AppActionType.SET_ALL_PRODUCT:
+      return {
+        ...state,
+        products: [...action.payload],
+      };
     case AppActionType.ADD_PRODUCT:
       return {
         ...state,
@@ -33,6 +39,21 @@ export function appReducer(
       return {
         ...state,
         colorMode: action.payload,
+      };
+    case AppActionType.SET_ALL_TRANSACTION:
+      return {
+        ...state,
+        transactions: [...action.payload],
+      };
+    case AppActionType.ADD_TRANSACTION:
+      return {
+        ...state,
+        products: state.products.map(product =>
+          product.id === action.payload.product.id
+            ? action.payload.product
+            : product,
+        ),
+        transactions: [...state.transactions, action.payload],
       };
     default:
       return state;

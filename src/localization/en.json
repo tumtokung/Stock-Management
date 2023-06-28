@@ -4,13 +4,34 @@
         "select" : "Select"
     },
     "Dashboard" : {
-        "title" : "Dashboard"
+        "title" : "Dashboard",
+        "product" : "Product",
+        "totalProduct" : "Stock Product",
+        "totalPurchase" : "Total Purchase",
+        "totalSale" : "Total Sale"
     },
     "Product" : {
-        "title" : "Product"
+        "title" : "Product",
+        "bath" : "Bath",
+        "pieces" : "pieces",
+        "type" : "type",
+        "name" : "Product Name",
+        "quantity" : "Quantity",
+        "purchasePrice" : "Purchase Price",
+        "sellingPrice" : "Sell Price",
+        "noProduct" : "No Product",
+        "productDetail" : "Product Detail",
+        "createProduct" : "Create Product",
+        "editProduct" : "Edit Product",
+        "deleteDes": "Are you sure delete product?",
+        "cancel" : "Cancel",
+        "delete" : "Delete",
+        "create": "Create"
     },
     "Transaction" : {
-        "title" : "Transaction"
+        "title" : "Transaction",
+        "buy" : "Buy",
+        "sell" : "Sell"
     },
     "Setting" : {
         "title" : "Setting",
@@ -21,5 +42,8 @@
         "dark" : "Dark",
         "light" : "Light",
         "deviceSetting" : "Device Setting" 
+    },
+    "Common": {
+        "loading": "loading"
     } 
 }

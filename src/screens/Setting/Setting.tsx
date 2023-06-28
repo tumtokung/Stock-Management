@@ -20,6 +20,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getColorModeState} from '../../redux/selector';
 import {updateColorMode} from '../../redux/action';
 import {ThemeColor} from '../../redux/models';
+import {setColorModeLocal, setLanguageLocal} from '../../utils/localStorage';
 
 const Setting = () => {
   const colorModeState = useSelector(getColorModeState);
@@ -44,6 +45,7 @@ const Setting = () => {
 
   const setMode = (mode: ThemeColor) => {
     dispatch(updateColorMode(mode));
+    setColorModeLocal(mode);
     switch (mode) {
       case 'dark':
         setColorMode(mode);
@@ -64,6 +66,7 @@ const Setting = () => {
 
   const setLang = (Lang: string) => {
     i18n.changeLanguage(Lang);
+    setLanguageLocal(Lang);
     toggleLangDialog();
   };
 

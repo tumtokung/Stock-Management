@@ -1,4 +1,4 @@
-import {Product, ThemeColor} from './models';
+import {Product, ThemeColor, Transaction} from './models';
 import {RootState} from './store';
 
 export function getProductState(state: RootState): Product[] {
@@ -7,4 +7,8 @@ export function getProductState(state: RootState): Product[] {
 
 export function getColorModeState(state: RootState): ThemeColor {
   return state.colorMode;
+}
+
+export function getTransactionState(state: RootState): Transaction[] {
+  return state.transactions;
 }

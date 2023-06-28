@@ -4,13 +4,34 @@
         "select" : "เลือก"
     },
     "Dashboard" : {
-        "title" : "แดชบอร์ด"
+        "title" : "แดชบอร์ด",
+        "product" : "สินค้า",
+        "totalProduct" : "สินค้าคงเหลือ",
+        "totalPurchase" : "ยอดซื้อทั้งหมด",
+        "totalSale" : "ยอดขายทั้งหมด"
     },
     "Product" : {
-        "title" : "สินค้า"
+        "title" : "สินค้า",
+        "bath" : "บาท",
+        "pieces" : "ชิ้น",
+        "type" : "แบบ",
+        "name" : "ชื่อสินค้า",
+        "quantity" : "จำนวน",
+        "purchasePrice" : "ราคาซื้อ",
+        "sellingPrice" : "ราคาขาย",
+        "noProduct" : "ไม่มีสินค้า",
+        "productDetail" : "รายละเอียดสินค้า",
+        "createProduct" : "เพิ่มสินค้า",
+        "editProduct" : "แก้ไขสินค้า",
+        "deleteDes": "คุณต้องการลบสินค้าใช่หรือไม่",
+        "cancel" : "ยกเลิก",
+        "delete" : "ลบ",
+        "create": "สร้าง"
     },
     "Transaction" : {
-        "title" : "ธุรกรรม"
+        "title" : "ธุรกรรม",
+        "buy" : "ซื้อ",
+        "sell" : "ขาย"
     },
     "Setting" : {
         "title" : "ตั้งค่า",
@@ -21,5 +42,8 @@
         "dark" : "มืด",
         "light" : "สว่าง",
         "deviceSetting" : "ตามตั้งค่าเครื่อง"  
+    },
+    "Common": {
+        "loading": "กำลังโหลด"
     } 
 }

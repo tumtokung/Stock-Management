@@ -25,6 +25,24 @@ const expandRightWhite = require('./Expand_right_white.png');
 const expandLeftBlack = require('./Expand_left_black.png');
 const expandLeftWhite = require('./Expand_left_white.png');
 
+const searchBlack = require('./Search_black.png');
+const searchWhite = require('./Search_white.png');
+
+const addBlack = require('./Add_black.png');
+const addWhite = require('./Add_white.png');
+
+const editBlack = require('./Edit_black.png');
+const editWhite = require('./Edit_white.png');
+
+const deleteBlack = require('./Trash_black.png');
+const deleteWhite = require('./Trash_white.png');
+
+const doneBlack = require('./Done_black.png');
+const doneWhite = require('./Done_white.png');
+
+const imgBlack = require('./Img_black.png');
+const imgWhite = require('./Img_white.png');
+
 export {
   homeBlackIcon,
   homeActiveBlackIcon,
@@ -47,4 +65,16 @@ export {
   expandRightWhite,
   expandLeftBlack,
   expandLeftWhite,
+  searchBlack,
+  searchWhite,
+  addBlack,
+  addWhite,
+  editBlack,
+  editWhite,
+  deleteBlack,
+  deleteWhite,
+  doneBlack,
+  doneWhite,
+  imgBlack,
+  imgWhite,
 };

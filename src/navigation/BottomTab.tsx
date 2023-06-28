@@ -4,16 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ProductStack from './ProductStack';
 import TransactionStack from './TransactionStack';
 import {Dashboard, Setting} from '../screens';
-import {
-  Box,
-  Button,
-  HStack,
-  Modal,
-  Spacer,
-  Spinner,
-  Text,
-  VStack,
-} from 'native-base';
+import {Box, Button, HStack, Modal, Spacer, Text, VStack} from 'native-base';
 import {
   homeBlackIcon,
   homeActiveBlackIcon,
@@ -39,12 +30,18 @@ import {useTranslation} from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {KEY, setColorModeLocal, setLanguageLocal} from '../utils/localStorage';
 import {useDispatch, useSelector} from 'react-redux';
-import {updateColorMode} from '../redux/action';
+import {
+  setAllProduct,
+  setAllTransaction,
+  updateColorMode,
+} from '../redux/action';
 import {ThemeColor} from '../redux/models';
 import {Appearance} from 'react-native';
 import {getColorModeState} from '../redux/selector';
-import {IconSelect} from '../components';
+import {IconSelect, LoadingScreen} from '../components';
 import {useModal} from '../hooks';
+import {getProductService} from '../services/productService';
+import {getTransactionService} from '../services/transactionService';
 
 const Tab = createBottomTabNavigator();
 
@@ -68,6 +65,7 @@ const BottomTab: FC = () => {
   const [selectLang, setSelectLang] = useState<string>('');
   const [loadApp, setLoadApp] = useState<boolean>(false);
   const isDarkMode: boolean = colorMode === 'dark';
+  const modeFromSystem: string = Appearance.getColorScheme() ?? 'light';
 
   const homeIcon = isDarkMode ? homeWhiteIcon : homeBlackIcon;
   const homeActiveIcon = isDarkMode ? homeActiveWhiteIcon : homeActiveBlackIcon;
@@ -90,7 +88,6 @@ const BottomTab: FC = () => {
     : settingActiveBlackIcon;
 
   const loadLanguage = async () => {
-    setLoadApp(true);
     // Setting Language App
     const language = await AsyncStorage.getItem(KEY.APP_LANGUAGE);
     if (language && language !== 'null') {
@@ -118,12 +115,33 @@ const BottomTab: FC = () => {
 
     if (themeString && themeString !== 'null') {
       dispatch(updateColorMode(themColor));
+      switch (themColor) {
+        case 'dark':
+          setColorMode(themColor);
+          break;
+        case 'light':
+          setColorMode(themColor);
+          break;
+        case 'device':
+          setColorMode(modeFromSystem);
+          break;
+      }
     } else {
       const isSuccess = await setColorModeLocal(themColor);
       console.log('setColormode isSuccess  >> ', isSuccess);
       dispatch(updateColorMode('device'));
+      setColorMode(modeFromSystem);
     }
-    setLoadApp(false);
+  };
+
+  const loadAllProduct = async () => {
+    const products = await getProductService();
+    dispatch(setAllProduct(products));
+  };
+
+  const loadAllTranSaction = async () => {
+    const transactions = await getTransactionService();
+    dispatch(setAllTransaction(transactions));
   };
 
   const changeLanguage = (code: string) => {
@@ -138,31 +156,25 @@ const BottomTab: FC = () => {
   };
 
   useEffect(() => {
+    setLoadApp(true);
     setSelectLang(languages[0].code);
     loadLanguage();
     loadColorMode();
+    loadAllProduct();
+    loadAllTranSaction();
+    setLoadApp(false);
   }, []);
 
   //check device change theme
   useEffect(() => {
     if (colorModeState === 'device') {
-      const modeFromSystem: string = Appearance.getColorScheme() ?? 'light';
       setColorMode(modeFromSystem);
     }
   }, [Appearance]);
 
   // Load App
   if (loadApp) {
-    return (
-      <Modal isOpen={true}>
-        <Modal.Content width="200px" height="200px" justifyContent="center">
-          <VStack alignItems="center" space="2">
-            <Spinner accessibilityLabel="Loading App" size="lg" />
-            <Text fontSize="16"> Loading ...</Text>
-          </VStack>
-        </Modal.Content>
-      </Modal>
-    );
+    return <LoadingScreen isShow={loadApp} />;
   }
   // First Visit App
   if (modal) {
@@ -205,6 +217,7 @@ const BottomTab: FC = () => {
           <Box _dark={{bg: 'blueGray.800'}} _light={{bg: 'blue.50'}} flex={1} />
         ),
         tabBarShowLabel: false,
+        tabBarHideOnKeyboard: true,
       }}>
       <Tab.Screen
         name={Tabs.Dashboard}
