@@ -8,6 +8,7 @@ export const getTransactionService = async (): Promise<Transaction[]> => {
   try {
     const transactionData = await firestore()
       .collection(TransactionsCollection)
+      .orderBy('createdAt', 'asc')
       .get();
     const item: any[] = [];
     console.log('transactionData firebase >>', transactionData);

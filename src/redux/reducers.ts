@@ -19,7 +19,7 @@ export function appReducer(
     case AppActionType.ADD_PRODUCT:
       return {
         ...state,
-        products: [...state.products, action.payload],
+        products: [action.payload, ...state.products],
       };
     case AppActionType.UPDATE_PRODUCT:
       return {
@@ -53,7 +53,7 @@ export function appReducer(
             ? action.payload.product
             : product,
         ),
-        transactions: [...state.transactions, action.payload],
+        transactions: [action.payload, ...state.transactions],
       };
     default:
       return state;

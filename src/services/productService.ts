@@ -8,7 +8,10 @@ const ProductsCollection = 'Products';
 
 export const getProductService = async (): Promise<Product[]> => {
   try {
-    const productsData = await firestore().collection(ProductsCollection).get();
+    const productsData = await firestore()
+      .collection(ProductsCollection)
+      .orderBy('createdAt', 'asc')
+      .get();
     const item: any[] = [];
     console.log('products firebase >>', productsData);
     productsData.docs.map(_data => {

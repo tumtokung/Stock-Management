@@ -35,6 +35,8 @@ const Transaction: FC = () => {
     const year: number = date.getFullYear();
     const month: number = date.getMonth() + 1;
     const day: number = date.getDate();
+    const hour: number = date.getHours();
+    const minute: number = date.getMinutes();
 
     return (
       <HStack
@@ -49,7 +51,7 @@ const Transaction: FC = () => {
             {isBuy ? t('Transaction.buy') : t('Transaction.sell')}{' '}
             {item.product.name} {item.quantity} {t('Product.pieces')}
           </Text>
-          <Text fontSize="md">{`${day}/${month}/${year}`}</Text>
+          <Text fontSize="md">{`${day}/${month}/${year} ${hour}:${minute}`}</Text>
         </VStack>
         <Spacer />
         <Text fontSize="xl" color={isBuy ? 'red.500' : 'green.500'}>
